@@ -10,10 +10,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('background.jpg') no-repeat;
-    background-size: cover;
+    background: url('background.png') no-repeat;
+    background-size:1650px 1000px;
+
 }
 
+ /* ! NAVBAR */
 header {
     position: fixed;
     top: 0;
@@ -83,8 +85,9 @@ header {
     color:rgb(44, 101, 177);
 }
 
-/* LOG IN FORM */
 
+
+/* ! LOG IN FORM */
 .wrapper {
     position: relative;
     width: 400px;
@@ -97,12 +100,59 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* * hide top right of ".icon-close */
+    overflow: hidden;
+
+    /* * hide form before clicking button */
+    transform: scale(0);
+
+    /* * wrapper active displays form*/
+    transition: transform .5s ease, height .2s ease;
 }   
+
+.wrapper.active{
+    height: 520px;
+}
+
+/* *DISPLAY FORM AFTER PRESSING BUTTON */
+.wrapper.active-popup {
+    transform: scale(1);
+}
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
 }
+
+.wrapper .form-box.login {
+    transition: tranform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background-color: #162938;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
 
 .form-box h2 {
     font-size: 2em;
@@ -124,7 +174,7 @@ header {
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
-    color: #162938;
+    color: #fff;
     font-weight: 500;
     pointer-events: none;
     /* transition for letters going up on click */
@@ -143,7 +193,7 @@ header {
     border: none;
     outline: none;
     font-size: 1em;
-    color: #162938;
+    color: #fff;
     font-weight: 600;
     padding: 0 35px 0 5px;
 
@@ -153,13 +203,13 @@ header {
     position: absolute;
     right: 8px;
     font-size: 1.2em;
-    color: #162938;
+    color: #fff;
     line-height: 57px;
 }
 
 .remember-forgot {
     font-size: .9em;
-    color: #162938;
+    color: #fff;
     font-weight: 500;
     margin: -15px 0 15px;
     display: flex;
@@ -167,15 +217,58 @@ header {
 }
 
 .remember-forgot label input {
-    accent-color: #162938;
+    accent-color: #fff;
     margin-right: 3px;
 }
 
 .remember-forgot a {
-    color: #162938;
+    color: #fff;
     text-decoration: none;
 }
 
 .remember-forgot a:hover {
     text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.login-register p {
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-register p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+
+/* ! REGISTER FORM */
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+    transition: tranform .18s ease;
+    transform: translateX(0);
 }
